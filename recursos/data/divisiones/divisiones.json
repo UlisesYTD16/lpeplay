@@ -1,0 +1,11 @@
+[
+  { "slug": "segunda-nacional", "nombre": "Segunda Nacional", "logo": "recursos/logos/segunda-nacional.png" },
+  { "slug": "tercera-c", "nombre": "Tercera C", "logo": "recursos/logos/tercera-c.png" },
+  { "slug": "division-disney", "nombre": "División Disney+", "logo": "recursos/logos/disney.png" },
+  { "slug": "pax-assistance", "nombre": "PAX Assistance", "logo": "recursos/logos/pax.png" },
+  { "slug": "sexta-f", "nombre": "Sexta F", "logo": "recursos/logos/sexta-f.png" },
+  { "slug": "rbls", "nombre": "RBLS", "logo": "recursos/logos/rbls.png" },
+  { "slug": "urkijo-competition", "nombre": "Urkijo Competition", "logo": "recursos/logos/urkijo.png" },
+  { "slug": "lfg", "nombre": "LFG", "logo": "recursos/logos/lfg.png" },
+  { "slug": "federal-u", "nombre": "Federal U", "logo": "recursos/logos/federal-u.png" }
+]
