@@ -1,237 +1,292 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0d0002" />
-
-  <!-- SEO -->
-  <title>LPE Play — Fútbol en vivo, resúmenes y shows</title>
-  <meta name="description" content="LPE Play: partidos en vivo, resúmenes, shows y contenido exclusivo de todas las divisiones. Suscribite y mirá donde quieras." />
-  <meta name="keywords" content="LPE Play, fútbol, streaming, divisiones, resúmenes, partidos en vivo, LPE Show, Puerto Rico Patea" />
-  <meta name="author" content="LPE Play" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://lpeplay.neocities.org/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="LPE Play" />
-  <meta property="og:title" content="LPE Play — Fútbol en vivo, resúmenes y shows" />
-  <meta property="og:description" content="Partidos en vivo, resúmenes, shows y contenido exclusivo de todas las divisiones." />
-  <meta property="og:image" content="recursos/imagenes/og-cover.jpg" />
-  <meta property="og:url" content="https://lpeplay.neocities.org/" />
-  <meta property="og:locale" content="es_AR" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LPE Play — Fútbol en vivo, resúmenes y shows" />
-  <meta name="twitter:description" content="Partidos en vivo, resúmenes, shows y contenido exclusivo de todas las divisiones." />
-  <meta name="twitter:image" content="recursos/imagenes/og-cover.jpg" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="recursos/logos/favicon.png" />
-  <link rel="apple-touch-icon" href="recursos/logos/apple-touch-icon.png" />
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            wine:      '#0d0002',
-            wineDeep:  '#070001',
-            wineSoft:  '#1a0004',
-            wineGlow:  '#3a0610',
-            accent:    '#e11d48',
-            accentSoft:'#fb7185'
-          },
-          fontFamily: {
-            chillax: ['Chillax', 'system-ui', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
-  <link rel="stylesheet" href="estilo.css" />
+  <meta name="theme-color" content="#2a0308" />
+  <title>LPE Play — Liga Peluche Argentina</title>
+  <meta name="description" content="LPE Play: la plataforma audiovisual de la Liga Peluche Argentina. Partidos, resúmenes, programas y mucho más." />
+  <link rel="icon" href="recursos/logos/favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-chillax bg-wine text-white antialiased overflow-x-hidden">
+<body>
 
   <!-- ============ HEADER ============ -->
-  <header id="site-header" class="fixed top-0 inset-x-0 z-50 header-blur">
-    <div class="max-w-[1600px] mx-auto flex items-center justify-between px-4 md:px-8 h-16 md:h-20">
-
-      <a href="index.html" class="flex items-center gap-2 shrink-0" aria-label="LPE Play - Inicio">
-        <img src="recursos/logos/logo-lpeplay.svg" alt="LPE Play" class="h-8 md:h-10 w-auto" />
+  <header class="lpe-header" id="lpeHeader">
+    <div class="lpe-header__inner">
+      <a href="index.html" class="lpe-logo" aria-label="LPE Play — Inicio">
+        <img src="recursos/logos/lpe-play.png" alt="LPE Play" />
       </a>
 
-      <div class="flex items-center gap-2 md:gap-4">
-        <button id="search-open" class="icon-btn" aria-label="Buscar">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/>
-          </svg>
+      <div class="lpe-header__actions">
+        <button class="icon-btn" id="openSearch" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
 
-        <button id="menu-open" class="icon-btn" aria-label="Abrir menú">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
+        <button class="icon-btn" id="openMenu" aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ============ DRAWER MENÚ ============ -->
-  <aside id="menu-drawer" class="drawer" aria-hidden="true">
-    <div class="drawer-panel">
-      <div class="flex items-center justify-between mb-8">
-        <img src="recursos/logos/logo-lpeplay.svg" alt="LPE Play" class="h-8 w-auto" />
-        <button id="menu-close" class="icon-btn" aria-label="Cerrar menú">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
+  <!-- ============ MENÚ HAMBURGUESA ============ -->
+  <aside class="lpe-menu" id="lpeMenu" aria-hidden="true">
+    <div class="lpe-menu__inner">
+      <nav>
+        <ul class="lpe-menu__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="seleccion.html">Selección</a></li>
 
-      <nav class="flex flex-col gap-2 text-lg">
-        <a href="index.html" class="drawer-link">Inicio</a>
-        <a href="#" class="drawer-link">Selección</a>
+          <li class="has-sub">
+            <button class="sub-toggle" aria-expanded="false">
+              Divisiones <span class="chevron">▾</span>
+            </button>
+            <ul class="lpe-menu__sub">
+              <li><a href="divisiones/segunda-nacional.html">Segunda Nacional</a></li>
+              <li><a href="divisiones/tercera-c.html">Tercera C</a></li>
+              <li><a href="divisiones/division-disney.html">División Disney+</a></li>
+              <li><a href="divisiones/pax-assistance.html">PAX Assistance</a></li>
+              <li><a href="divisiones/sexta-f.html">Sexta F</a></li>
+              <li><a href="divisiones/rbls.html">RBLS</a></li>
+              <li><a href="divisiones/urkijo-competition.html">Urkijo Competition</a></li>
+              <li><a href="divisiones/lfg.html">LFG</a></li>
+              <li><a href="divisiones/federal-u.html">Federal U</a></li>
+            </ul>
+          </li>
 
-        <details class="drawer-group">
-          <summary class="drawer-link flex items-center justify-between">
-            Divisiones
-            <svg class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="pl-4 flex flex-col gap-1 text-base text-white/70 mt-1">
-            <a href="#" class="drawer-sublink">Femenino</a>
-            <a href="#" class="drawer-sublink">TPA</a>
-            <a href="#" class="drawer-sublink">ELPE</a>
-            <a href="#" class="drawer-sublink">Proyección</a>
-            <a href="#" class="drawer-sublink">Futsal</a>
-          </div>
-        </details>
+          <li><a href="femenino.html">Femenino</a></li>
+          <li><a href="tpa.html">TPA</a></li>
+          <li><a href="elpe.html">ELPE</a></li>
+          <li><a href="proyeccion.html">Proyección</a></li>
+          <li><a href="futsal.html">Futsal</a></li>
 
-        <details class="drawer-group">
-          <summary class="drawer-link flex items-center justify-between">
-            Ver Más
-            <svg class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="pl-4 flex flex-col gap-1 text-base text-white/70 mt-1">
-            <a href="#" class="drawer-sublink">Condiciones</a>
-            <a href="#" class="drawer-sublink">Seguridad del creador menor de edad y transferencias a su Mercado Pago</a>
-            <a href="#" class="drawer-sublink">Políticas de privacidad</a>
-            <a href="#" class="drawer-sublink">Términos y condiciones</a>
-            <a href="#" class="drawer-sublink">Preguntas frecuentes</a>
-          </div>
-        </details>
+          <li id="authSlot">
+            <button id="openAuth" class="auth-link">Iniciar sesión / Registrarte</button>
+          </li>
 
-        <div class="mt-6 pt-6 border-t border-white/10">
-          <a id="auth-link" href="login.html" class="drawer-link text-accent">Iniciar Sesión / Registrarte</a>
-        </div>
+          <li class="has-sub">
+            <button class="sub-toggle" aria-expanded="false">Ver Más <span class="chevron">▾</span></button>
+            <ul class="lpe-menu__sub">
+              <li><a href="condiciones.html">Condiciones</a></li>
+              <li><a href="seguridad-menor.html">Seguridad del creador menor de edad y transferencias a su cuenta de Mercado Pago</a></li>
+              <li><a href="privacidad.html">Políticas de privacidad</a></li>
+              <li><a href="terminos.html">Términos y condiciones</a></li>
+              <li><a href="faq.html">Preguntas frecuentes</a></li>
+            </ul>
+          </li>
+        </ul>
       </nav>
     </div>
-    <div class="drawer-backdrop" id="menu-backdrop"></div>
   </aside>
 
-  <!-- ============ DRAWER BUSCADOR ============ -->
-  <aside id="search-drawer" class="drawer" aria-hidden="true">
-    <div class="search-panel">
-      <form id="search-form" class="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3 border border-white/10">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
-        <input id="search-input" type="search" placeholder="Buscar equipos, partidos, resúmenes…" class="bg-transparent outline-none flex-1 text-lg placeholder-white/40" autocomplete="off" />
-        <button type="button" id="search-close" class="icon-btn" aria-label="Cerrar buscador">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </form>
-      <p class="text-white/40 text-sm mt-4">Presioná Enter para buscar.</p>
+  <!-- ============ BUSCADOR ============ -->
+  <div class="lpe-search" id="searchPanel" aria-hidden="true">
+    <div class="lpe-search__inner">
+      <div class="lpe-search__bar">
+        <input type="search" id="searchInput" placeholder="Buscar equipos, competiciones, partidos, programas..." autocomplete="off" />
+        <button class="icon-btn" id="closeSearch" aria-label="Cerrar buscador">✕</button>
+      </div>
+      <div id="searchResults" class="lpe-search__results"></div>
     </div>
-    <div class="drawer-backdrop" id="search-backdrop"></div>
-  </aside>
+  </div>
 
-  <!-- ============ MAIN ============ -->
-  <main class="pt-16 md:pt-20">
+  <!-- ============ MODAL AUTENTICACIÓN ============ -->
+  <div class="lpe-modal" id="authModal" aria-hidden="true">
+    <div class="lpe-modal__panel">
+      <button class="icon-btn lpe-modal__close" id="closeAuth" aria-label="Cerrar">✕</button>
 
-    <section class="hero-video-wrap">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto">
-        <source src="recursos/imagenes/hero-hinchadas.mp4" type="video/mp4" />
-      </video>
-      <div class="hero-video-overlay"></div>
-    </section>
+      <!-- Login / Registro -->
+      <div id="authForms">
+        <div class="lpe-tabs">
+          <button class="lpe-tab active" data-tab="login">Iniciar sesión</button>
+          <button class="lpe-tab" data-tab="register">Registrarme</button>
+        </div>
 
-    <section class="teams-marquee-wrap py-8" aria-label="Equipos de todas las divisiones">
-      <div class="teams-marquee" id="teams-marquee-row1"></div>
-      <div class="teams-marquee reverse mt-4" id="teams-marquee-row2"></div>
-    </section>
+        <form id="loginForm" class="lpe-form">
+          <label>Correo electrónico
+            <input type="email" name="email" required autocomplete="email" />
+          </label>
+          <label>Contraseña
+            <input type="password" name="password" required autocomplete="current-password" minlength="6" />
+          </label>
+          <p class="form-error" id="loginError"></p>
+          <button class="btn-primary" type="submit">Entrar</button>
+          <button type="button" class="btn-link" id="forgotPassword">¿Olvidaste tu contraseña?</button>
+        </form>
 
-    <section class="section-block" id="section-eventos">
-      <div class="section-head">
-        <h2 class="section-title">Próximos eventos</h2>
+        <form id="registerForm" class="lpe-form hidden">
+          <label>Correo electrónico
+            <input type="email" name="email" required autocomplete="email" />
+          </label>
+          <label>Contraseña
+            <input type="password" name="password" required autocomplete="new-password" minlength="6" />
+          </label>
+          <p class="form-error" id="registerError"></p>
+          <button class="btn-primary" type="submit">Crear cuenta</button>
+        </form>
+
+        <div class="lpe-divider"><span>o</span></div>
+
+        <button class="btn-google" id="googleLogin">
+          <svg viewBox="0 0 48 48" width="20" height="20"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          Continuar con Google
+        </button>
       </div>
-      <div class="poster-carousel-wrap">
-        <button class="carousel-btn prev" data-target="eventos-track" aria-label="Anterior">‹</button>
-        <div class="poster-carousel" id="eventos-track"></div>
-        <button class="carousel-btn next" data-target="eventos-track" aria-label="Siguiente">›</button>
+
+      <!-- Sesión activa -->
+      <div id="authSession" class="hidden">
+        <div class="session-info">
+          <p>Sesión iniciada como</p>
+          <strong id="sessionEmail"></strong>
+        </div>
+        <button class="btn-secondary" id="logoutBtn">Cerrar sesión</button>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <section class="section-block" data-resumenes-section="primera"></section>
-    <section class="section-block" data-resumenes-section="segunda-nacional"></section>
-    <section class="section-block" data-resumenes-section="federal-u"></section>
-    <section class="section-block" data-resumenes-section="lfg"></section>
+  <!-- ============ HERO VIDEO ============ -->
+  <section class="hero-video">
+    <video autoplay muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback">
+      <source src="https://cdn.pixabay.com/video/2020/05/25/40130-424930032_large.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-video__overlay">
+      <h1>Viví la Liga Peluche Argentina</h1>
+      <p>Partidos, resúmenes y programas, todo en un solo lugar.</p>
+    </div>
+  </section>
 
-    <section class="section-block" data-resumenes-section="lpe-show"></section>
-    <section class="section-block" data-resumenes-section="puerto-rico-patea"></section>
-    <section class="section-block" data-resumenes-section="femenino"></section>
-    <section class="section-block" data-resumenes-section="futsal"></section>
+  <!-- ============ CARRUSELES DE ESCUDOS POR DIVISIÓN ============ -->
+  <section class="section shields-section">
+    <h2 class="section-title">Escudos de las divisiones</h2>
+    <div id="shieldsGrid" class="shields-grid"></div>
+  </section>
 
-    <section class="section-block" id="section-programas">
-      <div class="section-head">
-        <h2 class="section-title">Programas</h2>
+  <!-- ============ EVENTOS PROGRAMADOS ============ -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">Eventos programados</h2>
+    </div>
+    <div class="carousel carousel--posters" id="eventsCarousel">
+      <button class="carousel__nav prev" data-target="eventsCarousel">‹</button>
+      <div class="carousel__track" id="eventsTrack"></div>
+      <button class="carousel__nav next" data-target="eventsCarousel">›</button>
+    </div>
+  </section>
+
+  <!-- ============ RESÚMENES POR DIVISIÓN ============ -->
+  <section class="section" id="resumenesSection">
+    <div id="resumenesContainer"></div>
+  </section>
+
+  <!-- ============ LPE SHOW ============ -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">LPE Show</h2>
+      <p class="section-sub">Viernes 16:00 (ARG) — Solo en LPE Play</p>
+    </div>
+    <div class="carousel" id="showCarousel">
+      <button class="carousel__nav prev" data-target="showCarousel">‹</button>
+      <div class="carousel__track" id="showTrack"></div>
+      <button class="carousel__nav next" data-target="showCarousel">›</button>
+    </div>
+  </section>
+
+  <!-- ============ PUERTO RICO PATEA ============ -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">Puerto Rico Patea</h2>
+      <p class="section-sub">Competencia de penales</p>
+    </div>
+    <div class="carousel" id="prpCarousel">
+      <button class="carousel__nav prev" data-target="prpCarousel">‹</button>
+      <div class="carousel__track" id="prpTrack"></div>
+      <button class="carousel__nav next" data-target="prpCarousel">›</button>
+    </div>
+  </section>
+
+  <!-- ============ FEMENINO + FUTSAL ============ -->
+  <section class="section dual-section">
+    <div class="dual-card">
+      <h2 class="section-title">Campeonato Femenino</h2>
+      <p class="section-sub">Toda la acción del fútbol femenino de la LPE.</p>
+      <a class="btn-secondary" href="femenino.html">Ver competición</a>
+      <div class="carousel carousel--small" id="femeninoCarousel">
+        <div class="carousel__track" id="femeninoTrack"></div>
       </div>
-      <div class="poster-carousel-wrap">
-        <button class="carousel-btn prev" data-target="programas-track" aria-label="Anterior">‹</button>
-        <div class="poster-carousel" id="programas-track"></div>
-        <button class="carousel-btn next" data-target="programas-track" aria-label="Siguiente">›</button>
+    </div>
+    <div class="dual-card">
+      <h2 class="section-title">Futsal</h2>
+      <p class="section-sub">Resúmenes y partidos de la liga de futsal.</p>
+      <a class="btn-secondary" href="futsal.html">Ver competición</a>
+      <div class="carousel carousel--small" id="futsalCarousel">
+        <div class="carousel__track" id="futsalTrack"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section-block" data-resumenes-section="proyeccion"></section>
+  <!-- ============ PROGRAMAS ============ -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">Programas de LPE Play</h2>
+    </div>
+    <div class="carousel carousel--posters" id="programasCarousel">
+      <button class="carousel__nav prev" data-target="programasCarousel">‹</button>
+      <div class="carousel__track" id="programasTrack"></div>
+      <button class="carousel__nav next" data-target="programasCarousel">›</button>
+    </div>
+  </section>
 
-    <section class="section-block" id="section-partners">
-      <div class="section-head">
-        <h2 class="section-title">Partners</h2>
-      </div>
-      <div class="partners-grid" id="partners-grid"></div>
-    </section>
+  <!-- ============ PROYECCIÓN ============ -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">Resúmenes del Torneo Proyección</h2>
+      <a class="btn-link" href="proyeccion.html">Ver más</a>
+    </div>
+    <div class="carousel" id="proyeccionCarousel">
+      <button class="carousel__nav prev" data-target="proyeccionCarousel">‹</button>
+      <div class="carousel__track" id="proyeccionTrack"></div>
+      <button class="carousel__nav next" data-target="proyeccionCarousel">›</button>
+    </div>
+  </section>
 
-  </main>
+  <!-- ============ PARTNERS ============ -->
+  <section class="section partners">
+    <h2 class="section-title">Partners</h2>
+    <div class="partners__grid" id="partnersGrid"></div>
+  </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="footer-line"></div>
-    <div class="footer-content">
-      <img src="recursos/logos/logo-lpeplay.svg" alt="LPE Play" class="h-10 mx-auto mb-8" />
-
-      <div class="footer-links">
-        <a href="index.html">Inicio</a>
-        <a href="#">Términos y condiciones</a>
-        <a href="#">Políticas de privacidad</a>
-        <a href="#">Preguntas frecuentes</a>
+  <footer class="lpe-footer">
+    <div class="lpe-footer__inner">
+      <div class="lpe-footer__logo">
+        <img src="recursos/logos/lpe-play.png" alt="LPE Play" />
       </div>
 
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.4.4 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.4.2-1.1.4-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.4-.4-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .4-.2 1.1-.4 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 1.8a3.1 3.1 0 100 6.2 3.1 3.1 0 000-6.2zm5.1-2.1a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/></svg>
+      <div class="lpe-footer__cols">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="privacidad.html">Políticas de privacidad</a></li>
+        </ul>
+        <ul>
+          <li><a href="terminos.html">Términos y condiciones</a></li>
+          <li><a href="faq.html">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div class="lpe-footer__social">
+        <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
         </a>
-        <a href="#" aria-label="Twitter / X">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.9 2H22l-7.3 8.3L23.3 22h-6.8l-5.3-6.9L5.2 22H2l7.8-8.9L1 2h6.9l4.8 6.3L18.9 2zm-1.2 18h1.9L7.1 4H5.1l12.6 16z"/></svg>
+        <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.244 2H21l-6.55 7.48L22 22h-6.797l-4.85-6.35L4.9 22H2.14l7.02-8.02L2 2h6.96l4.39 5.8L18.244 2zm-1.19 18h1.88l-8.71-12.57H7.9L17.054 20z"/></svg>
         </a>
       </div>
     </div>
-    <div class="footer-glow"></div>
+    <div class="lpe-footer__glow" aria-hidden="true"></div>
   </footer>
 
-  <script type="module" src="code.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
-        </html>
+</html>
